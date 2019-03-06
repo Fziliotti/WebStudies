@@ -1,0 +1,48 @@
+Um transpiler é um compilador de código fonte para código fonte. Ou seja, em linguagens como C,
+compilamos o código fonte para um código binário para que esse rode em nosso sistema operacional.
+Já um transpiler poderia converter o código escrito em C para JavaScript, ou seja, é um compilador
+que traduz o código fonte de uma linguagem para outra.
+
+No caso do JavaScript, o truque é compilar o código fonte (nossos arquivos JS) para JavaScript.
+Mas espera aí Flávio, não faz sentido algum converter código JavaScript para código JavaScript.
+Faz sim, porque no caso estaríamos convertendo um código em ES6 para ES5! Nesse contexto, o programador
+organiza seu código em ES6 para ajudar na manutenção e legibilidade, mas na hora que esse código for
+entrar em produção ele é todo convertido para ES5, ou seja, toda feature do ES6 é implementada (muitas vezes verbosamente)
+usando ES5! Com isso, qualquer navegador do mercado será capaz de compreender nosso código.
+
+
+EX: ES6
+
+class Pessoa {
+
+    constructor(nome, sobrenome = '') {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+    }
+
+    obterNomeCompleto() {
+        return `${this.nome} ${this.sobrenome}`;
+    }
+
+    static imprimePessoas(pessoas) {
+        pessoas.forEach((pessoa) => console.log(pessoa.nome));
+    }
+}
+
+O mesmo código, convertido para ES5 através de um transpiler ficaria assim:
+
+function Pessoa(nome, sobrenome) {
+
+    this.nome = nome;
+    this.sobrenome = sobrenome || ''
+}
+
+Pessoa.prototype.obterNomeCompleto = function() {
+    return this.nome + ' ' + this.sobrenome
+}
+
+Pessoa.imprimePessoa(pessoas) {
+    pessoas.forEach(function(pessoa) {
+        console.log(pessoa.nome);
+    });
+}

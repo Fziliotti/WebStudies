@@ -1,0 +1,23 @@
+// A class should have only one job.
+
+class Animal {
+    constructor(name: string){ }
+    getAnimalName() { }
+    saveAnimal(a: Animal) { }
+}
+
+SRP states that classes should have one responsibility, here, we can draw out two responsibilities: animal database management and animal properties management. The constructor and getAnimalName manage the Animal properties while the saveAnimal manages the Animal storage on a database.
+
+
+RESOLUTION:
+
+To make this conform to SRP, we create another class that will handle the sole responsibility of storing an animal to a database:
+
+class Animal {
+    constructor(name: string){ }
+    getAnimalName() { }
+}
+class AnimalDB {
+    getAnimal(a: Animal) { }
+    saveAnimal(a: Animal) { }
+}

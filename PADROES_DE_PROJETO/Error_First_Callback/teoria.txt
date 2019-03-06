@@ -1,0 +1,23 @@
+O Error-first Callback, ou errorback, é um padrão que foi adotado no mundo Node.js.
+
+Como você já aprendeu, o callback é uma função chamada quando uma tarefa for executada,
+como uma requisição Ajax ou o acesso ao banco de dados. No entanto, a qualquer momento
+pode acontecer um erro no processamento e aí vem a questão de como lidar com isso.
+
+A convenção é que cada callback receba sempre o erro no primeiro parâmetro.
+Na função callback, basta então verificar esse parâmetro para saber se ocorreu um erro ou não!
+
+
+Por exemplo, para ler um arquivo com Node.js, podemos escrever o seguinte código:
+fs = require('fs');
+fs.readFile('./arquivo.txt', function(erro, dados) {
+    if(erro) {
+        console.log('Um erro ocorreu');
+        return;
+    }
+    console.log(dados);
+});
+
+
+Repare que a função readFile recebe como segundo parâmetro o callback,
+que por sua vez tem dois parâmetros: o erro e os dados; e dentro do callback testamos o erro!

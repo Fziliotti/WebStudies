@@ -1,0 +1,125 @@
+Make fine grained interfaces that are client specific
+Clients should not be forced to depend upon interfaces that they do not use.
+
+
+EX:
+
+Let’s look at the below IShape interface:
+
+interface IShape {
+    drawCircle();
+    drawSquare();
+    drawRectangle();
+}
+This interface draws squares, circles, rectangles. class Circle, Square or Rectangle implementing the IShape interface must define the methods drawCircle(), drawSquare(),drawRectangle().
+
+class Circle implements IShape {
+    drawCircle(){
+        //...
+    }
+    drawSquare(){
+        //...
+    }
+    drawRectangle(){
+        //...
+    }    
+}
+class Square implements IShape {
+    drawCircle(){
+        //...
+    }
+    drawSquare(){
+        //...
+    }
+    drawRectangle(){
+        //...
+    }    
+}
+class Rectangle implements IShape {
+    drawCircle(){
+        //...
+    }
+    drawSquare(){
+        //...
+    }
+    drawRectangle(){
+        //...
+    }    
+}
+It’s quite funny looking at the code above. class Rectangle implements methods (drawCircle and drawSquare) it has no use of, likewise Square implementing drawCircle, and drawRectangle, and class Circle (drawSquare, drawSquare).
+
+If we add another method to the IShape interface, like drawTriangle(),
+
+***********************RESOLUTION 1:
+
+To make our IShape interface conform to the ISP principle, we segregate the actions to different interfaces:
+
+interface IShape {
+    draw();
+}
+interface ICircle {
+    drawCircle();
+}
+interface ISquare {
+    drawSquare();
+}
+interface IRectangle {
+    drawRectangle();
+}
+interface ITriangle {
+    drawTriangle();
+}
+class Circle implements ICircle {
+    drawCircle() {
+        //...
+    }
+}
+class Square implements ISquare {
+    drawSquare() {
+        //...
+    }
+}
+class Rectangle implements IRectangle {
+    drawRectangle() {
+        //...
+    }    
+}
+class Triangle implements ITriangle {
+    drawTriangle() {
+        //...
+    }
+}
+class CustomShape implements IShape {
+   draw(){
+      //...
+   }
+}
+The ICircle interface handles only the drawing of circles, IShape handles drawing of any shape :), ISquare handles the drawing of only squares and IRectangle handles drawing of rectangles.
+
+
+
+***********************RESOLUTION 2:
+
+class Circle implements IShape {
+    draw(){
+        //...
+    }
+}
+
+class Triangle implements IShape {
+    draw(){
+        //...
+    }
+}
+
+class Square implements IShape {
+    draw(){
+        //...
+    }
+}
+
+class Rectangle implements IShape {
+    draw(){
+        //...
+    }
+}                               

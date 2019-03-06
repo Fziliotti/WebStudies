@@ -1,0 +1,39 @@
+uma requisição usando o XMLHttpRequest que segue basicamente os passos seguintes:
+
+let xhr = new XMLHttpRequest();
+xhr.open('GET', 'negociacoes/semana');
+xhr.onreadystatechange = function() {
+
+}
+xhr.send();
+
+
+Criamos o objeto, abrimos uma conexão, 
+usamos a propriedade onreadystatechange e enviamos a requisição.
+
+A propriedade onreadystatechange guarda uma função para ser
+executada automaticamente cada vez que há uma alteração no estado da requisição.
+
+
+Uma requisição passa por estados, por isso o nome da propriedade em português é pronto para mudança de estado.
+ Podemos passar uma função que verifica os estados e executará uma ação, como fizemos no video:
+
+ xhr.onreadystatechange = () => {
+    if(xhr.readyState == 4) { //status 4
+        if(xhr.status == 200) {
+            console.log(xhr.responseText);
+        } else {
+            console.log(xhr.responseText);
+            this._mensagem.texto = 'Não foi possível obter as negociações';
+        }
+    }
+}
+
+Cada status é representado através de um inteiro. Os estados possíveis são:
+
+0: requisição ainda não iniciada.
+1: conexão com o servidor estabelecida.
+2: requisição recebida.
+3: processando requisição.
+4: requisição concluída e a resposta esta pronta.
+Você encontrará mais informações sobre o objeto XMLHttpRequest no da Mozilla Developer Network.

@@ -1,0 +1,15 @@
+Object-Oriented type of programming brought a new design to software development.
+
+This enables developers to combine data with the same purpose/functionality in one class to deal with the sole purpose there, regardless of the entire application.
+
+But, this Object-oriented programming doesn’t prevent confusing or unmaintainable programs.
+
+As such, five guidelines were developed by Robert C. Martin. These five guidelines/principles made it easy for developers to create readable and maintainable programs.
+
+These five principles were called the S.O.L.I.D principles (the acronym was derived by Michael Feathers).
+
+S: Single Responsibility Principle
+O: Open-Closed Principle
+L: Liskov Substitution Principle
+I: Interface Segregation Principle
+D: Dependency Inversion Principle

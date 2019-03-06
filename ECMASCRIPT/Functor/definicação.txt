@@ -1,0 +1,25 @@
+
+No jargão da programação funcional um Functor 
+é simplesmente algo mapeável, ou seja, que suporta a operação map.
+
+A operação flatMap se assemelha da função map, 
+com a diferença de que retorna o resultado em uma dimensão apenas.
+
+
+// código anterior omitido 
+.then(notas => notas.reduce((array, nota) => array.concat(nota.itens), []))
+// código posterior omitido
+
+// Se tornará:
+notas.$flatMap(notas => notas.itens)
+
+
+com o seguinte:
+// só adicionada no prototype se não existir
+
+if(!Array.prototype.$flatMap) {
+    Array.prototype.$flatMap = function(cb) {
+        return this.map(cb).reduce((destArray, array) => 
+            destArray.concat(array), []);
+    }
+}

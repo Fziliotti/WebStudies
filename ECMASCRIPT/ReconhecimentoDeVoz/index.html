@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reconhecimento de voz</title>
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            line-height: 1.57;
+            display: grid;
+            grid-template-columns: 2fr 5fr;
+
+        }
+
+        .wrapper {
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .app {
+            height: 20vh;
+            width: 100px;
+
+            background: linear-gradient(#c1f, #70e);
+            border-radius: 4px;
+            transition: .3s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .visor {
+
+            height: 100vh;
+            width: 100%;
+            background-color: #333;
+            text-align: center;
+            color: white;
+        }
+
+        .textResult {
+            font-size: 1.2rem;
+        }
+    </style>
+
+
+    <div class="visor">
+        <div class="textResult">
+
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="app">
+
+        </div>
+    </div>
+
+
+
+    <script>
+        const recognition = new webkitSpeechRecognition();
+
+        recognition.continuous = true;
+        recognition.lang = 'pt-BR';
+        recognition.interimResults = true;
+        recognition.maxAlternatives = 1;
+
+        recognition.start();
+
+        const palavras = new RegExp("crescer|diminuir|inteira|vermelho|preto|rosa|verde", "gi");
+        const textResult = document.querySelector('.textResult');
+        const app = document.querySelector(".app");
+        recognition.onresult = ({
+            results
+        }) => {
+            const last = results.length - 1;
+            const lastResult = results[last][0].transcript.toLowerCase();
+            console.log(lastResult);
+            textResult.innerHTML = `<p> ${lastResult} </p>`
+            const possuiPalavras = lastResult.match(palavras);
+
+
+            if (possuiPalavras) {
+                if (possuiPalavras.includes("crescer")) {
+                    app.style.height = "100vh";
+                    app.style.width = "20vw";
+                } else if (possuiPalavras.includes("diminuir")) {
+                    app.style.height = "20vh";
+                    app.style.width = "20vw";
+                } else if (possuiPalavras.includes("inteira")) {
+                    app.style.height = "100%";
+                    app.style.width = "100%";
+                }else if (possuiPalavras.includes("vermelho")) {
+                    app.style.background = "red"
+                }else if (possuiPalavras.includes("preto")) {
+                    app.style.background = "black"
+                }else if (possuiPalavras.includes("rosa")) {
+                    app.style.background = "pink"
+                }else if (possuiPalavras.includes("verde")) {
+                    app.style.background = "green"
+                }
+            }
+        }
+
+
+           
+        
+
+        //Reiniciar o reconhecimento de voz, para não deixar que ele desative automaticamente
+        recognition.onend = () => recognition.start();
+    </script>
+</body>
+
+</html>

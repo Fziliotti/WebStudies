@@ -1,0 +1,37 @@
+<!-- dissecando-uma-promise.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dissecando uma promise</title>
+</head>
+<body>
+
+
+    <p>
+            É por meio do método then, da instância de Promise que temos acesso ao resultado da ação. O método then recebe uma função e nela temos acesso sempre como primeiro parâmetro ao resultado da ação. Internamente em nossa Promise, é o valor passado para resolve que estará disponível para a função then. Sendo assim, em then, só depois de 5 segundos teremos acesso ao resultado a ação, que é uma string, mas poderia ser qualquer outro tipo de dado.
+    </p>
+
+    <p>
+            Promises (promessas) agora fazem parte da linguagem JavaScript a partir do ES6. Elas representam o resultado futuro de uma ação, que pode ser de sucesso ou fracasso. Elas visam tornar códigos assíncronos mais legíveis e fáceis de manter, evitando o Callback Hell. Uma ou outra chamada assíncrona não é problemática, o problema é quando temos uma sucessão de chamadas assíncronas e o modo tradicional de lidar com elas, aninhando callbacks, torna o código difícil de ler e manter, principalmente o tratamento de erros.
+    </p>
+    <script>
+
+        let promise = new Promise((resolve, reject) => {
+            setTimeout(() => resolve('PROMISE RESOLVIDA'), 5000);
+        });
+
+        promise.then(resultado => console.log(resultado));
+    </script>
+</body>
+</html>
+
+
+<!-- 
+
+    É por meio do método then, da instância de Promise que temos acesso ao resultado da ação. 
+    O método then recebe uma função e nela temos acesso sempre como primeiro parâmetro ao resultado da ação. 
+    Internamente em nossa Promise, é o valor passado para resolve que estará disponível para a função then.
+    Sendo assim, em then, só depois de 5 segundos teremos acesso ao resultado a ação, que é uma string, mas poderia 
+    ser qualquer outro tipo de dado.
+ -->

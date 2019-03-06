@@ -1,0 +1,16 @@
+A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
+
+
+Um cluster, em poucas palavras, é basicamente um conjunto de recursos computacionais separados atuando de forma conjunta, agindo como se fossem um único recurso, geralmente com o objetivo de aumentar o poder de processamento de uma aplicação.
+
+Quando os servidores de uma aplicação já estão escalados horizontalmente, com algum tipo de gerenciador de carga (load balancer) atuando para balanceá-los, basicamente já temos um cluster. Porém, quando falamos sobre a utilização do Node.js em modo cluster, na verdade falamos sobre dividir o processo principal da aplicação, criando um ou mais processos filhos (denominados workers) dentro do mesmo host e que responderão às requisições simultaneamente.
+
+O Node.js é um sistema single-threaded. Em outras palavras, dentro do processo principal do Node.js existe apenas uma única linha de execução que parte do ponto de entrada da aplicação até o seu encerramento. Apesar desta característica, o Node.js executa tarefas assíncronas de maneira extremamente eficiente graças ao Node.js Event Loop.
+
+
+
+A dúvida que geralmente surge neste ponto é: como os requests são processados pelos workers? Quem decide quais requests serão processados por quais workers? A resposta é simples: o módulo de cluster do Node.js faz todo este trabalho. Todos os requests são recebidos pelo processo principal e o módulo de cluster distribui estas requisições, atuando como um balanceador de carga (load balancer) para os workers, desta maneira:
+
+Node.js cluster module lb
+
+Atualmente (Node.js 7.10.0), o módulo de cluster suporta duas estratégias de balanceamento de carga, mas é recomendada a utilização sempre da estratégia padrão (round-robin), pois a própria documentação oficial do Node.js informa que a distribuição da carga tende a apresentar-se extremamente desbalanceada quando utilizada a estratégia não-padrão.

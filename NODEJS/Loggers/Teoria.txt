@@ -1,0 +1,31 @@
+Para fazer loggs. Você pode por exemplo colocar funções para logar(escrever) em arquivos de logs diretamente dentro da rota que está construindo.
+
+Ou ainda, pode usar o Morgan que é um middleware que irá intermediar as requisições e logar as informações delas.
+
+Você pode usar os dois: winston e morgan.
+
+ex:
+
+var logger = require('../servicos/logger.js');
+var morgan = require('morgan');
+
+module.exports = function(){
+  var app = express();
+
+  //criação de middlewares
+  //common é um formato padrão do morgan que irá logar a requisicao de uma forma padrão
+  app.use(morgan('common', {
+    stream: {
+      write: function(message){
+        logger.info(message)
+      }
+    }
+  }))
+
+
+  ex2:
+
+    app.get('/pagamentos', function (req, res) {
+
+      logger.info('recebendo get na /pagamentos!')
+    });

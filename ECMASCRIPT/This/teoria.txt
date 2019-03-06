@@ -1,0 +1,31 @@
+Diferença do This em Arrow Functions e Functions normais?
+
+
+Aqui o this terá um escopo lexico:
+
+() => {
+    this.qualquerCoisa()
+}
+
+
+
+Aqui o this tem escopo dinamico:
+
+functions() {
+
+    this.tal
+}
+
+
+class NegociacaoController {
+
+    constructor() {
+        this._listaNegociacoes = new ListaNegociacoes(function(model) {
+            this._negociacoesView.update(model); 
+
+            //NESSA LINHA ACIMA o this dá errado, 
+            //pega da listaNegociacoes e nao da 
+            //classe NegociacaoController 
+        });
+    }
+}        

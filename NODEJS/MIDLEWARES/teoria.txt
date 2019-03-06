@@ -1,0 +1,22 @@
+Middleware é o software de computador que fornece serviços para aplicações de software além daqueles disponíveis pelo sistema operacional.
+
+No caso do ambiente web, nodej:
+
+Middleware é todo o tipo de função que está entre um pedido HTTP e a resposta final que o servidor envia de volta para o cliente.
+
+Por exemplo, usando Express.js, um pedido GET simples teria esta código:
+
+var app = express();
+app.get('/', function(req, res, next) {
+  res.send('Hello World!');
+});
+se quiseres fazer um log do tipo de request e do url de um request podes usar este middleware simples:
+
+app.use(function(req, res, next) {
+  console.log(req.method, req.url);
+  next();
+});
+
+A função middleware tem 3 parametros, pedido, resposta e callback. Podes ter n middleware a processar um pedido HTTP, encadeados. Quando um middleware acaba de processar coloca-se no final do código next();, invocando assim a callback e o código continua a correr para o proximo middleware ou resposta final.
+
+O middleware é portanto uma funcionalidade, funções que executam processos intermédios. Os exemplos mais comuns são interagir com a BD, ir buscar ficheiros estáticos, tratar de erros ou redirecionamentos.

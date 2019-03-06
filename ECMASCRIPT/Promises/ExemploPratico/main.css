@@ -1,0 +1,53 @@
+body{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+header{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    background-color: #323232;
+    color:white;
+    font-size: 3rem;
+}
+
+.logBox{
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#log{
+    font-size: 2rem;
+    color:black;
+    margin-top:2rem;
+    width: 50%;
+}
+#log2{
+    font-size: 2rem;
+    color:black;
+    margin-top:2rem;
+    width: 50%;
+}
+
+#btn{
+    margin: 2rem auto;
+    display: block;
+    outline: none;
+    background-color: #545454;
+    font-size: 1.4rem;
+    border: 1px solid #eee;
+    padding: 1rem;
+    color:white;
+    cursor: pointer;
+}
+
+#btn:hover{
+    opacity: .7;
+}

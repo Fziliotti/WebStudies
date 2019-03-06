@@ -1,0 +1,46 @@
+Utilizando logs na aplicação
+Um dos pontos mais críticos de uma aplicação é quando se precisa identificar aquele famoso "erro que só acontece em produção". Nessa situação o programador não tem como debugar o código e muitas vezes não consegue reproduzir a situação em um ambiente de testes porque não tem como saber de fato qual foi o cenário ocorrido.
+
+Quando isso acontece é muito importante que se tenha disponível toda informação possível sobre aquela execução. E a melhor maneira de conseguir isso é através de Logs. Pois ele são o rastro da execução da aplicação e podem ser tão detalhados quanto o programador desejar.
+
+Logs simples com Winston
+Uma api bem simples, mas bastante eficaz para o uso de logs é a winston. Ela foi projetada para ser uma API de logs simples e universal com suporte para múltiplas camadas de logs. É possível que cada instância do winston tenha múltiplas camadas de logs e diferentes níveis em cada uma dessas camadas.
+
+Ela também desacopla bastante a sua implementação interna de escrita dos logs das interfaces que são expostas para o programador. Isso facilita muito a vida do programador e é algo que muitas APIs de log acabam não fazendo.
+
+Vejamos um exemplo básico passo a passo de uso do winston para entender melhor os conceitos. O primeiro passo é obviamente instalar a lib através do npm e em seguida carregá-la no arquivo desejado:
+
+var winston = require('winston');
+Com objeto em mãos é possível criar um nova instância de logger com as camadas desejadas:
+
+    var logger = new winston.Logger({
+      transports: [
+        new winston.transports.File({
+          level: "info",
+          filename: "logs/payfast.log",
+          maxsize: 1048576,
+          maxFiles: 10,
+          colorize: false
+        });
+      ]
+    });
+Cada camada é representada por um transport e você pode ver que a criação do objeto recebe um array deles. Então de fato é possível ter várias camadas. Ou vários transports.
+
+Dentro de cada transport são definidas as características específicas de cada camada, como onde o log será escrito por exemplo: se será num arquivo, num banco de dados, no console, etc. O primeiro requisito definido no exemplo acima foi que o log deveria ser escrito em um arquivo:
+
+    new winston.transports.File({ ...
+Dentro desse objeto agora são passadas as informações referentes à escrita nesse arquivo:
+
+level: "info": indica o nível do log.
+filename: "logs/payfast.log": o arquivo onde o log será escrito.
+maxsize: 1048576: o tamanho máximo a que pode chegar o arquivo de log, para que comece a ser rotacionado.
+maxFiles: 10: a quantidade máxima de arquivos que devem ser mantidos para essa camada de log.
+colorize: false: se o log deve usar cores ou não.
+Existem ainda diversas outras possíveis configurações e você pode encontrar a relação completa no GitHub do projeto: https://github.com/winstonjs/winston
+
+Para finalmente escrever o log agora basta utilizar o objeto que contem a camada criada e invocar um dos métodos de escrita:
+
+    logger.log('Log utilizado nível que foi configurado na camada: info.');
+    logger.log('info', 'Log forçando o nível info via parâmetro na função log().');
+    logger.info('Log forçando o nível info via invocação direta função info()');
+Existem opções para invocação direta dos níveis de logs através de funções que possuem os mesmos nomes, ou através da função log() que recebe o nível de log como parâmetro. Quando esta informação não é passada, ela usa o nível que já estiver definido na configuração daquela camada.

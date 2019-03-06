@@ -1,0 +1,75 @@
+A sub-class must be substitutable for its super-class
+
+The aim of this principle is to ascertain that a sub-class can assume the place of its super-class without errors. If the code finds itself checking the type of class then, it must have violated this principle.
+
+Exemple:
+
+//...
+function AnimalLegCount(a: Array<Animal>) {
+    for(int i = 0; i <= a.length; i++) {
+        if(typeof a[i] == Lion)
+            log(LionLegCount(a[i]));
+        if(typeof a[i] == Mouse)
+            log(MouseLegCount(a[i]));
+        if(typeof a[i] == Snake)
+            log(SnakeLegCount(a[i]));
+    }
+}
+AnimalLegCount(animals);
+
+
+
+
+//...
+class Pigeon extends Animal {
+        
+}
+const animals[]: Array<Animal> = [
+    //...,
+    new Pigeon();
+]
+function AnimalLegCount(a: Array<Animal>) {
+    for(int i = 0; i <= a.length; i++) {
+        if(typeof a[i] == Lion)
+            log(LionLegCount(a[i]));
+        if(typeof a[i] == Mouse)
+            log(MouseLegCount(a[i]));
+         if(typeof a[i] == Snake)
+            log(SnakeLegCount(a[i]));
+        if(typeof a[i] == Pigeon)
+            log(PigeonLegCount(a[i]));
+    }
+}
+AnimalLegCount(animals);
+To make this function follow the LSP principle, we will follow this LSP requirements postulated by Steve Fenton:
+
+If the super-class (Animal) has a method that accepts a super-class type (Animal) parameter. Its sub-class(Pigeon) should accept as argument a super-class type (Animal type) or sub-class type(Pigeon type).
+If the super-class returns a super-class type (Animal). Its sub-class should return a super-class type (Animal type) or sub-class type(Pigeon).
+Now, we can re-implement AnimalLegCount function:
+
+function AnimalLegCount(a: Array<Animal>) {
+    for(let i = 0; i <= a.length; i++) {
+        a[i].LegCount();
+    }
+}
+AnimalLegCount(animals);
+
+
+
+
+The Animal class now have to implement/define a LegCount method:
+
+class Animal {
+    //...
+    LegCount();
+}
+And its sub-classes have to implement the LegCount method:
+
+//...
+class Lion extends Animal{
+    //...
+    LegCount() {
+        //...
+    }
+}
+//...

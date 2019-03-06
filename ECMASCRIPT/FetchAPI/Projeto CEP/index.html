@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscando CEP com Fetch API</title>
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+    <link href="assets/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/index.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    <main class="container">
+        <h1 class="title">Buscando CEP com Fetch API</h1>
+
+        <form class="form" onsubmit="buscarCep(event, this);">
+            <div class="row">
+                <div class="form___group">
+                    <label class="form__label" for="cep">CEP:</label>
+                    <input autofocus autocomplete="off" class="form___data" id="cep" maxlength="8" name="cep" pattern="([\d]{8})" placeholder="ex: 38408112" required type="text">
+                    <span class="form___requirement">* O campo deve ser informado com apenas números.</span>
+                </div>
+            </div>
+            <div class="row has-alignCenter">
+                <button class="form__button" type="submit">Buscar CEP</button>
+            </div>
+        </form>
+
+
+        <div class="result">
+            <div class="result__text">
+
+            </div>
+        </div>
+    </main>
+
+
+
+    <script src="assets/js/index.js" type="text/javascript"></script>
+</body>
+</html>
