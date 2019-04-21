@@ -1,21 +1,22 @@
 class Pessoa {
-    
-    constructor(nome){
+
+    constructor(nome) {
         this.nome = nome;
     }
 
-    setNome(novoNome){
+    setNome(novoNome) {
         this.nome = novoNome;
     }
 
-    get Nome(){
+    get Nome() {
         return this.nome;
     }
 
 }
 
+
 /* prototype permite que cria funcoes da classe em tempo de execucao */
-Pessoa.prototype.imprimir = function(){
+Pessoa.prototype.imprimir = function () {
     console.log("A pessoa tem o nome de :" + this.nome);
 }
 
@@ -27,16 +28,16 @@ console.log(a.Nome)
 
 
 let x = [
-    {name: "fabricio"},
-    {name: "Murilo"},
-    {name: "Felipe"}
+    { name: "fabricio" },
+    { name: "Murilo" },
+    { name: "Felipe" }
 ]
 
 
 x.forEach(
-    (a)=> 
-        (a.name == "fabricio") ? console.log('OBJETO BONITAO DO ARRAY x: ' + a.name) 
-        : console.log('OBJETO DO ARRAY x: ' + a.name)
+    (a) =>
+        (a.name == "fabricio") ? console.log('OBJETO BONITAO DO ARRAY x: ' + a.name)
+            : console.log('OBJETO DO ARRAY x: ' + a.name)
 )
 
 // x.forEach(

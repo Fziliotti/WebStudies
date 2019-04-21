@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      padding: 0;
+      margin: 0;
+      outline: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 10px;
+    }
+
+    body,
+    html,
+    #root {
+      height: 100%;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: 323232;
+      -webkit-font-smoothing: antialised !important;
+    }
+
+    .box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-size: 2rem;
+      height: 100%;
+    }
+
+    main{
+        height: 100%; /* Se voce tiver o pai com height 100%, vc consegue alinhar verticalmente seus elementos!!! */
+    }
+  </style>
+  <body>
+    <main>
+      <div class="box">
+        <div class="box__title">
+          <h1>Titulo da box</h1>
+        </div>
+        <div class="box__subtitle">
+          <h3>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis,
+            repellat.
+          </h3>
+        </div>
+        <div class="box__info">
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

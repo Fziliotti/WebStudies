@@ -4,26 +4,29 @@
 // A primeira é a função anônima cujo escopo léxico é encapsulado entre parênteses.
 // Isso previne o acesso externo às variáveis declaradas na IIFE, bem como evita que estas variáveis locais poluam o escopo global.
 
-(function () { 
-    var nome = "Felipe";
+(function () {
+  var nome = "Felipe";
 })();
 // A variável nome não é acessível fora do escopo da expressão 
 nome // gerará o erro "Uncaught ReferenceError: nome is not defined"
 
 
-var result = (function () { 
-    var nome = "Felipe"; 
-    return nome; 
-})(); 
+var result = (function () {
+  var nome = "Felipe";
+  return nome;
+})();
 // Imediatamente gera a saída: 
 result; // "Felipe"
 
 
 
-(function (message){
-    alert(message);
-  }
+(function (message) {
+
+  alert(message);
+}
 )('Let's go!')
+
+
 
 // alerta 'Let's go!'
 

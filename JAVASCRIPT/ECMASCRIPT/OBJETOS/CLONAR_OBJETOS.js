@@ -6,7 +6,12 @@ const shallowClone = { ...obj }
 
 // Other alternatives include:
 
-JSON.parse(JSON.stringify(obj)) 
+{
+  dasda
+  dasa
+}
+
+JSON.parse(JSON.stringify(obj))
 // can be used to deep-clone a simple object, but it is CPU-intensive and only accepts valid JSON (therefore it strips functions and does not allow circular references).
 
 //  is another alternative.
@@ -15,7 +20,7 @@ Object.assign({}, obj)
 
 // is another more verbose alternative that shows the concept in greater depth.
 
-Object.keys(obj).reduce((acc, key) => (acc[key] = obj[key], acc), {}) 
+Object.keys(obj).reduce((acc, key) => (acc[key] = obj[key], acc), {})
 
 
 // Good to hear

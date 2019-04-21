@@ -42,3 +42,6 @@ function isDeepEqual(obj1, obj2, testPrototypes = false) {
         obj1Props.every(prop => isDeepEqual(obj1[prop], obj2[prop]))
     )
 }
+
+
+const a = { nome: "fabricio" }

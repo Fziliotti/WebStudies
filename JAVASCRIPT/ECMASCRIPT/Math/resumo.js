@@ -21,9 +21,10 @@ console.log(Math.sqrt(2));
 console.log(Math.max(3, 2));
 console.log(Math.min(3, 2));
 
+
 //Aleatorio
 console.log(Math.random());
-console.log(~~(Math.random()*5 + 2));
+console.log(~~(Math.random() * 5 + 2));
 
 //Verificar se uma string pode virar numero
 console.log(isNaN("2.4"));
@@ -35,13 +36,13 @@ console.log(Number("2.4") + Number("1e2"));
 //Funções uteis:
 function intPow(n, k) { //Potencias inteiras com boa performance
 	var out = n;
-	while(--k) out *= n;
+	while (--k) out *= n;
 
 	return out;
 }
 console.log(intPow(2, 3));
 
 function intRandom(a, b) { //Numero aleatorio entre outros dois
-	return ~~(Math.random() * (1 + Math.max(a, b) - Math.min(a,b)) + Math.min(a, b));
+	return ~~(Math.random() * (1 + Math.max(a, b) - Math.min(a, b)) + Math.min(a, b));
 }
 console.log(intRandom(5, 10));
