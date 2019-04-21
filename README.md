@@ -1,5 +1,5 @@
-# JavaScriptStudies
-Studies and examples about Ecmascript, NodeJS, Design Patterns and more is coming. 📚
+# WebStudies
+Personal Studies and examples about HTML5, CSS3,Ecmascript, NodeJS, Design Patterns and more is coming. 📚
 
 ## Contribuing
 This project is under progress, if you want help, please open an issue first to discuss what you would like to help or sugest. 
