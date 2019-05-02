@@ -1,0 +1,6 @@
+Um objeto Blob representa um objeto do tipo arquivo, com  dados brutos imutáveis. Blobs representam dados que não estão necessariamente em um formato JavaScript nativo. A interface File é baseada no Blob, herdando funcionalidade blob e expandindo-o para suportar arquivos no sistema do usuário.
+
+Para construir um Blob a partir de outro objeto ou dado não-blob , utilize o construtor Blob(). Para criar um blob que contém um subconjunto de dados de outro blob, use o método slice(). Para obter um objeto Blob de um arquivo no sisema de arquivos do usuário, veja a documentação File.
+
+Um objeto File é um tipo específico de  Blob, e podem ser utilizados em qualquer contexto que um Blob pode. Em particular, FileReader, URL.createObjectURL(), createImageBitmap(), e XMLHttpRequest.send() aceitam ambos, Blobs e Files.
+
