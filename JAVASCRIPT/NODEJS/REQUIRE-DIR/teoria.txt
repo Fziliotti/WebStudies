@@ -1,0 +1,15 @@
+o require-dir é uma lib para organizar de forma mais estruturada os arquivos e as importações deles por exemplo:
+
+Dentro da pasta controllers temos o index.js:
+module.exports = require('require-dir')()
+
+No arquivo routes.js, poderei importar TODOS os controllers com
+
+const controllers = require('./app/controllers')
+
+na hora de mapear para a rota é só fazer:
+
+routes.get('/users', handle(controllers.UserController.index))
+
+
+Isso irá eliminar repetição de código, e dependendo do tamanho da aplicação, várias linhas de codigo serão reduzidas.
