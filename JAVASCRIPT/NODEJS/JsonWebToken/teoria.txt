@@ -1,0 +1,23 @@
+O JWT é um padrão (RFC-7519) de mercado que define como transmitir e armazenar objetos JSON de forma compacta e segura entre diferentes aplicações. Os dados nele contidos podem ser validados a qualquer momento pois o token é assinado digitalmente.
+
+Ele é formado por três seções: Header, Payload e Signature.
+
+Header
+O Header é um objeto JSON que define informações sobre o tipo do token (typ), nesse caso JWT, e o algorítmo de criptografia usado em sua assinatura (alg), normalmente HMAC SHA256 ou RSA.
+
+
+
+Payload
+O Payload é um objeto JSON com as Claims (informações) da entidade tratada, normalmente o usuário autenticado.
+Essas claims podem ser de 3 tipos:
+Reserved claims: atributos não obrigatórios (mas recomendados) que são usados na validação do token pelos protocolos de segurança das APIs.
+
+Geralmente os atributos mais utilizados são: sub, iss e exp.
+
+Public claims: atributos que usamos em nossas aplicações. Normalmente armazenamos as informações do usuário autenticado na aplicação.
+Private claims: atributos definidos especialmente para compartilhar informações entre aplicações.
+
+
+Signature
+A assinatura é a concatenação dos hashes gerados a partir do Header e Payload usando base64UrlEncode, com uma chave secreta ou certificado RSA.
+
