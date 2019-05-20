@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      *,
+      *::after,
+      *::before {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-size: 10px;
+      }
+      main {
+        margin-top: 200px;
+      }
+      main section {
+        width: 70%;
+        font-size: 1.2rem;
+        text-align: justify;
+        margin: 6rem auto;
+      }
+      main section:nth-child(2n) {
+        background-color: #545454;
+        color: white;
+        width: 100%;
+        margin: 0 auto;
+        padding: 2rem 15%;
+      }
+
+      header {
+        background-color: #323232;
+        opacity: 0.9;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        font-size: 2rem;
+        transition: 0.3s all linear;
+        margin-bottom: 2rem;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+      }
+
+      .fixo {
+        width: 100%;
+        color: #323232;
+        background-color: cornflowerblue;
+        position: fixed;
+        top: 0;
+        right: 0;
+        box-shadow: 1px 2px 10px black;
+      }
+
+      #sectionTeste {
+        transition: 0.3s all linear;
+      }
+
+      .sticky {
+        background-color: blue;
+        color: white;
+      }
+      footer {
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.1rem;
+        background-color: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1>Esse é o Header</h1>
+    </header>
+
+    <main>
+      <section>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat
+        accusantium maiores, voluptate harum velit unde molestiae vel quos?
+        Inventore beatae quisquam blanditiis veniam laudantium culpa voluptatum
+        cupiditate architecto distinctio ratione fugit totam sunt, ut ducimus ea
+        odio quasi? Quos, accusamus explicabo cupiditate nobis inventore vero
+        ullam? Aliquam quo voluptatibus exercitationem laboriosam nisi velit
+        quaerat nam dignissimos enim eligendi? Provident corporis sequi ullam,
+        est quidem non. Itaque vitae neque consequuntur iste excepturi, a vel
+        possimus quod obcaecati maiores sint tempora minima sunt autem nostrum
+        nobis dolores ratione saepe eius sapiente placeat. Quae ducimus cum,
+        facere delectus aliquam perspiciatis quis aperiam dolorum atque esse
+        magnam illum exercitationem unde nisi cumque ad alias laboriosam quo. Ut
+        quam assumenda fugit, saepe nihil placeat eius, quasi quisquam voluptate
+        neque adipisci voluptatum? Reprehenderit iusto ab alias deleniti saepe
+        quas. Nesciunt laboriosam delectus illum. Omnis voluptatem inventore,
+        ratione dolorem architecto officiis sapiente error et at, consequuntur
+        reiciendis tempore cupiditate nemo! Nostrum laboriosam dolor temporibus
+        tempore veniam? Quas, velit accusamus! Placeat, necessitatibus vel,
+        doloribus laborum quos natus inventore eos, architecto veniam iure
+        corporis modi a itaque nihil pariatur atque totam assumenda veritatis
+        fugiat vitae. Iste, vitae delectus! Voluptate provident a deleniti rerum
+        quaerat sit blanditiis ipsum officia sint.
+      </section>
+      <section>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat
+        accusantium maiores, voluptate harum velit unde molestiae vel quos?
+        Inventore beatae quisquam blanditiis veniam laudantium culpa voluptatum
+        cupiditate architecto distinctio ratione fugit totam sunt, ut ducimus ea
+        odio quasi? Quos, accusamus explicabo cupiditate nobis inventore vero
+        ullam? Aliquam quo voluptatibus exercitationem laboriosam nisi velit
+        quaerat nam dignissimos enim eligendi? Provident corporis sequi ullam,
+        est quidem non. Itaque vitae neque consequuntur iste excepturi, a vel
+        possimus quod obcaecati maiores sint tempora minima sunt autem nostrum
+        nobis dolores ratione saepe eius sapiente placeat. Quae ducimus cum,
+        facere delectus aliquam perspiciatis quis aperiam dolorum atque esse
+        magnam illum exercitationem unde nisi cumque ad alias laboriosam quo. Ut
+        quam assumenda fugit, saepe nihil placeat eius, quasi quisquam voluptate
+        neque adipisci voluptatum? Reprehenderit iusto ab alias deleniti saepe
+        quas. Nesciunt laboriosam delectus illum. Omnis voluptatem inventore,
+        ratione dolorem architecto officiis sapiente error et at, consequuntur
+        reiciendis tempore cupiditate nemo! Nostrum laboriosam dolor temporibus
+        tempore veniam? Quas, velit accusamus! Placeat, necessitatibus vel,
+        doloribus laborum quos natus inventore eos, architecto veniam iure
+        corporis modi a itaque nihil pariatur atque totam assumenda veritatis
+        fugiat vitae. Iste, vitae delectus! Voluptate provident a deleniti rerum
+        quaerat sit blanditiis ipsum officia sint.
+      </section>
+      <section id="sectionTeste">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat
+        accusantium maiores, voluptate harum velit unde molestiae vel quos?
+        Inventore beatae quisquam blanditiis veniam laudantium culpa voluptatum
+        cupiditate architecto distinctio ratione fugit totam sunt, ut ducimus ea
+        odio quasi? Quos, accusamus explicabo cupiditate nobis inventore vero
+        ullam? Aliquam quo voluptatibus exercitationem laboriosam nisi velit
+        quaerat nam dignissimos enim eligendi? Provident corporis sequi ullam,
+        est quidem non. Itaque vitae neque consequuntur iste excepturi, a vel
+        possimus quod obcaecati maiores sint tempora minima sunt autem nostrum
+        nobis dolores ratione saepe eius sapiente placeat. Quae ducimus cum,
+        facere delectus aliquam perspiciatis quis aperiam dolorum atque esse
+        magnam illum exercitationem unde nisi cumque ad alias laboriosam quo. Ut
+        quam assumenda fugit, saepe nihil placeat eius, quasi quisquam voluptate
+        neque adipisci voluptatum? Reprehenderit iusto ab alias deleniti saepe
+        quas. Nesciunt laboriosam delectus illum. Omnis voluptatem inventore,
+        ratione dolorem architecto officiis sapiente error et at, consequuntur
+        reiciendis tempore cupiditate nemo! Nostrum laboriosam dolor temporibus
+        tempore veniam? Quas, velit accusamus! Placeat, necessitatibus vel,
+        doloribus laborum quos natus inventore eos, architecto veniam iure
+        corporis modi a itaque nihil pariatur atque totam assumenda veritatis
+        fugiat vitae. Iste, vitae delectus! Voluptate provident a deleniti rerum
+        quaerat sit blanditiis ipsum officia sint.
+      </section>
+      <section>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat
+        accusantium maiores, voluptate harum velit unde molestiae vel quos?
+        Inventore beatae quisquam blanditiis veniam laudantium culpa voluptatum
+        cupiditate architecto distinctio ratione fugit totam sunt, ut ducimus ea
+        odio quasi? Quos, accusamus explicabo cupiditate nobis inventore vero
+        ullam? Aliquam quo voluptatibus exercitationem laboriosam nisi velit
+        quaerat nam dignissimos enim eligendi? Provident corporis sequi ullam,
+        est quidem non. Itaque vitae neque consequuntur iste excepturi, a vel
+        possimus quod obcaecati maiores sint tempora minima sunt autem nostrum
+        nobis dolores ratione saepe eius sapiente placeat. Quae ducimus cum,
+        facere delectus aliquam perspiciatis quis aperiam dolorum atque esse
+        magnam illum exercitationem unde nisi cumque ad alias laboriosam quo. Ut
+        quam assumenda fugit, saepe nihil placeat eius, quasi quisquam voluptate
+        neque adipisci voluptatum? Reprehenderit iusto ab alias deleniti saepe
+        quas. Nesciunt laboriosam delectus illum. Omnis voluptatem inventore,
+        ratione dolorem architecto officiis sapiente error et at, consequuntur
+        reiciendis tempore cupiditate nemo! Nostrum laboriosam dolor temporibus
+        tempore veniam? Quas, velit accusamus! Placeat, necessitatibus vel,
+        doloribus laborum quos natus inventore eos, architecto veniam iure
+        corporis modi a itaque nihil pariatur atque totam assumenda veritatis
+        fugiat vitae. Iste, vitae delectus! Voluptate provident a deleniti rerum
+        quaerat sit blanditiis ipsum officia sint.
+      </section>
+      <section>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat
+        accusantium maiores, voluptate harum velit unde molestiae vel quos?
+        Inventore beatae quisquam blanditiis veniam laudantium culpa voluptatum
+        cupiditate architecto distinctio ratione fugit totam sunt, ut ducimus ea
+        odio quasi? Quos, accusamus explicabo cupiditate nobis inventore vero
+        ullam? Aliquam quo voluptatibus exercitationem laboriosam nisi velit
+        quaerat nam dignissimos enim eligendi? Provident corporis sequi ullam,
+        est quidem non. Itaque vitae neque consequuntur iste excepturi, a vel
+        possimus quod obcaecati maiores sint tempora minima sunt autem nostrum
+        nobis dolores ratione saepe eius sapiente placeat. Quae ducimus cum,
+        facere delectus aliquam perspiciatis quis aperiam dolorum atque esse
+        magnam illum exercitationem unde nisi cumque ad alias laboriosam quo. Ut
+        quam assumenda fugit, saepe nihil placeat eius, quasi quisquam voluptate
+        neque adipisci voluptatum? Reprehenderit iusto ab alias deleniti saepe
+        quas. Nesciunt laboriosam delectus illum. Omnis voluptatem inventore,
+        ratione dolorem architecto officiis sapiente error et at, consequuntur
+        reiciendis tempore cupiditate nemo! Nostrum laboriosam dolor temporibus
+        tempore veniam? Quas, velit accusamus! Placeat, necessitatibus vel,
+        doloribus laborum quos natus inventore eos, architecto veniam iure
+        corporis modi a itaque nihil pariatur atque totam assumenda veritatis
+        fugiat vitae. Iste, vitae delectus! Voluptate provident a deleniti rerum
+        quaerat sit blanditiis ipsum officia sint.
+      </section>
+    </main>
+
+    <footer>
+      Site desenvolvido para testar o getScrollPosition, por
+      <a href="www.github.io/fziliotti"></a>Fziliotti
+    </footer>
+
+    <script>
+      const getScrollPosition = (el = window) => ({
+        x: el.pageXOffset !== undefined ? el.pageXOffset : el.scrollLeft,
+        y: el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTop
+      });
+
+      const header = document.querySelector(".header");
+
+      function debounce(func, wait) {
+        let timer = null;
+        return function() {
+          clearTimeout(timer);
+          timer = setTimeout(func, wait);
+        };
+      }
+
+      var sectionTeste = document.getElementById("sectionTeste");
+      var distSection = sectionTeste.offsetTop;
+
+      window.onscroll = debounce(function() {
+        console.log("rodou");
+
+        let scrollPosition = getScrollPosition();
+        if (scrollPosition.y > 0) {
+          header.classList.add("fixo");
+        } else {
+          header.classList.remove("fixo");
+        }
+
+        if (window.pageYOffset >= distSection - 100) {
+          sectionTeste.classList.add("sticky");
+        } else {
+          sectionTeste.classList.remove("sticky");
+        }
+      }, 50);
+    </script>
+  </body>
+</html>

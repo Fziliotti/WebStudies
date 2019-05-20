@@ -16,7 +16,6 @@ class NegociacaoService {
                         console.log(xhr.responseText);
                         // Associado ao catch
                         reject('Não foi possível obter as negociações da semana');
-
                     }
                 }
             };
