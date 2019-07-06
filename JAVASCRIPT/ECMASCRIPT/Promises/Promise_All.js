@@ -1,20 +1,15 @@
 class NegociacaoService {
 
     obterNegociacoesDaSemana() {
-
         return new Promise((resolve, reject) => {
             let xhr = new XMLHttpRequest();
             xhr.open('GET', 'negociacoes/semana');
             xhr.onreadystatechange = () => {
                 if (xhr.readyState == 4) {
                     if (xhr.status == 200) {
-                        //associada ao then 
                         resolve(JSON.parse(xhr.responseText)
                             .map(objeto => new Negociacao(new Date(objeto.data), objeto.quantidade, objeto.valor)));
-
                     } else {
-                        console.log(xhr.responseText);
-                        // Associado ao catch
                         reject('Não foi possível obter as negociações da semana');
                     }
                 }
@@ -25,12 +20,8 @@ class NegociacaoService {
     }
 }
 
-
-
 importaNegociacoes() {
-
     let service = new NegociacaoService();
-
     //obterNegociacoesDaSemana retorna uma promise que internamente terá o resolve e reject
     service.obterNegociacoesDaSemana()
         .then(negociacoes => {

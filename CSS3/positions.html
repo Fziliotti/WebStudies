@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Posicionamento CSS</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        outline: 0;
+      }
+
+      body {
+        background-color: #f9f9f9;
+        height: 100%;
+        width: 100%;
+      }
+
+      section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100%;
+        border-bottom: 3px solid gray;
+      }
+
+      .box {
+        width: 300px;
+        height: 300px;
+        background-color: #545454;
+        color: white;
+      }
+
+      .color1 {
+        background-color: rgb(48, 48, 223);
+      }
+
+      .color2 {
+        background-color: tomato;
+      }
+
+      .color3 {
+        background-color: lightseagreen;
+        color: #212121;
+      }
+
+      .box--1 {
+        position: relative;
+      }
+      .box--1::before {
+        content: "'";
+        font-size: 100px;
+        position: absolute;
+        top: calc(50% - 50px);
+        left: -5px;
+        color: red;
+      }
+      .box--1 {
+        position: relative;
+      }
+
+      .box--1 .elem {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        width: 50px;
+        height: 50px;
+        background-color: red;
+      }
+
+      .box--2 {
+        position: absolute;
+      }
+
+      .box--2::after {
+        content: "";
+        width: 50px;
+        height: 50px;
+        bottom: -50px;
+        left: calc(50% - 25px);
+        background-color: red;
+        position: absolute;
+      }
+
+      .box--3 .elem {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        background-color: #545454;
+      }
+
+      section .elem1 {
+        z-index: 10;
+        height: 120px;
+        width: 100px;
+        background-color: blue;
+        position: relative;
+        top: 30px;
+        right: -30px;
+        transition: all linear 1s;
+      }
+      .elem1:hover {
+        z-index: 999;
+        height: 240px;
+        width: 200px;
+      }
+
+      section .elem2 {
+        z-index: 20;
+        height: 120px;
+        width: 100px;
+        background-color: green;
+        transition: all linear 1s;
+      }
+      .elem2:hover {
+        z-index: 999;
+        height: 240px;
+        width: 200px;
+      }
+
+      section .elem3 {
+        z-index: 30;
+        height: 120px;
+        width: 100px;
+        background-color: red;
+        position: relative;
+        bottom: 30px;
+        right: 30px;
+        transition: width linear 1s;
+      }
+      .elem3:hover {
+        z-index: 999;
+        /* height: 240px; */
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="box box--1">
+        <div class="elem"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="box box--2 color1">
+        <div class="elem"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="box box--3 color2">
+        <div class="elem"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="elem1"></div>
+      <div class="elem2"></div>
+      <div class="elem3"></div>
+      <div class="elem1"></div>
+      <div class="elem2"></div>
+      <div class="elem3"></div>
+      <div class="elem1"></div>
+      <div class="elem2"></div>
+      <div class="elem3"></div>
+    </section>
+  </body>
+</html>
