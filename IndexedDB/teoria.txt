@@ -1,0 +1,90 @@
+INDEXED DB  
+
+O IndexedDB permite armazenar e recuperar objetos indexados com uma "chave". Todas as alterações feitas no banco de dados ocorrem dentro de transações.
+
+IndexedDB é um sistema de tabela indexada.
+
+IndexedDB é uma API para armazenamento client-side de quantidades significantes de informações e buscas com alta performance por índices. Enquanto DOM Storage é útil para armazenamento de pequenas quantidade de dados, IndexedDB é a solução para grande porção de dados estruturados.
+
+
+Nota: há também a versão síncrona da API. A versão síncrona não tem implementação em qualquer navegador. É feita para ser utilizada com WebWorkers.
+
+
+Os bancos de dados IndexedDB armazenam pares de valores-chave. Os valores podem ser objetos estruturados complexos e as chaves podem ser propriedades desses objetos. Você pode criar índices que usam qualquer propriedade dos objetos para pesquisa rápida, bem como enumeração classificada. Chaves podem ser objetos binários.
+
+IndexedDB é construído em um modelo de banco de dados transacional . Tudo o que você faz no IndexedDB sempre acontece no contexto de uma transação . A API do IndexedDB fornece muitos objetos que representam índices, tabelas, cursores e assim por diante, mas cada um deles está vinculado a uma transação específica. Assim, você não pode executar comandos ou abrir cursores fora de uma transação. As transações têm um tempo de vida bem definido, portanto, tentar usar uma transação depois que ela foi concluída gera exceções. Além disso, transações de auto-confirmação e não podem ser confirmadas manualmente.
+
+Esse modelo de transação é realmente útil quando você considera o que pode acontecer se um usuário abrir duas instâncias do seu aplicativo da Web em duas guias diferentes simultaneamente. Sem operações transacionais, as duas instâncias poderiam interferir nas modificações umas das outras. Se você não estiver familiarizado com transações em um banco de dados, leia o artigo da Wikipedia sobre transações . Veja também a transação na seção Definições.
+
+A API do IndexedDB é principalmente assíncrona. A API não fornece dados retornando valores; em vez disso, você precisa passar uma função de retorno de chamada. Você não "armazena" um valor no banco de dados ou "recupera" um valor do banco de dados por meio de meios síncronos. Em vez disso, você "solicita" que uma operação de banco de dados aconteça. Você é notificado por um evento DOM quando a operação é concluída e o tipo de evento obtido informa a você se a operação foi bem-sucedida ou falhou. Isso soa um pouco complicado no começo, mas existem medidas de sanidade embutidas. Não é tão diferente da maneira como o XMLHttpRequest funciona.
+
+O IndexedDB usa muitas solicitações. Solicitações são objetos que recebem os eventos DOM com êxito ou falha mencionados anteriormente. Eles têm  onsuccess e  onerror propriedades, e você pode ligar  addEventListener() e  removeEventListener() neles. Eles também têm  readyState,  resulte  errorCode propriedades que informam o status da solicitação. A  result propriedade é particularmente mágica, pois pode ser muitas coisas diferentes, dependendo de como a solicitação foi gerada (por exemplo, uma  IDBCursor instância ou a chave de um valor que você acabou de inserir no banco de dados).
+
+O IndexedDB usa eventos DOM para notificá-lo quando os resultados estão disponíveis.  Os eventos DOM sempre têm uma  type propriedade (em IndexedDB, é mais comumente definido como  "success" ou  "error"). Eventos DOM também têm uma  target propriedade que indica para onde o evento está indo. Na maioria dos casos, o  target evento é o  IDBRequest objeto que foi gerado como resultado de uma operação de banco de dados. Eventos de sucesso não surgem e não podem ser cancelados. Os eventos de erro, por outro lado, fazem bolhas e podem ser cancelados. Isso é muito importante, pois os eventos de erro anulam todas as transações em que estão sendo executados, a menos que sejam cancelados.
+
+IndexedDB é orientado a objeto. IndexedDB não é um banco de dados relacional com tabelas que representam coleções de linhas e colunas. Essa diferença importante e fundamental afeta a maneira como você projeta e cria seus aplicativos.
+
+Em um armazenamento de dados relacional tradicional, você teria uma tabela que armazena uma coleção de linhas de dados e colunas de tipos nomeados de dados. O IndexedDB, por outro lado, exige que você crie um armazenamento de objeto para um tipo de dados e simplesmente persista objetos JavaScript nesse armazenamento. Cada armazenamento de objeto pode ter uma coleção de índices que torna eficiente a consulta e iteração. Se você não estiver familiarizado com sistemas de gerenciamento de banco de dados orientados a objetos, leia o artigo da Wikipedia sobre banco de dados de objetos .
+
+O IndexedDB não usa SQL (Structured Query Language ). Ele usa consultas em um índice que produz um cursor, que você usa para iterar no conjunto de resultados. Se você não estiver familiarizado com os sistemas NoSQL, leia o artigo da Wikipedia sobre NoSQL .
+
+IndexedDB adere a uma política de mesma origem . Uma origem é o domínio, o protocolo da camada de aplicativo e a porta de uma URL do documento em que o script está sendo executado. Cada origem tem seu próprio conjunto associado de bancos de dados. Todo banco de dados tem um nome que o identifica dentro de uma origem.
+
+O limite de segurança imposto ao IndexedDB impede que aplicativos acessem dados com uma origem diferente. Por exemplo, embora um aplicativo ou uma página em http://www.example.com/app/ possa recuperar dados de http://www.example.com/dir/ , porque eles têm a mesma origem, eles não podem recuperar dados de http://www.example.com:8080/dir/ (porta diferente) ou https://www.example.com/dir/ (protocolo diferente), porque têm origens diferentes.
+
+
+
+
+
+
+
+
+
+
+
+
+As interfaces da API assíncrona do IndexedDB são:
+IDBFactory
+Provém acesso ao banco de dados. É a interface implementado pelo objeto global indexedDB e é, portanto, o ponto de entrada para API.
+
+IDBCursor
+Itera sobre objectStores e índices
+
+IDBCursorWithValue
+Itera sobre objectStores e índices e retorna o atual valor do cursor
+
+IDBDatabase
+Represents a connection to a database. It's the only way to get a transaction on the database.
+
+IDBEnvironment
+Provides access to a client-side database. It is implemented by the window and worker objects.
+
+IDBIndex
+Provides access to the metadata of an index.
+
+IDBKeyRange
+Define um alcance das chaves.
+
+IDBObjectStore
+Representa um ObjectStore
+
+IDBOpenDBRequest
+Representa uma requisição para abrir o banco de dados.
+
+IDBRequest
+Provém acesso a resultados de requisições assíncronas ao banco de dados e a objetos do banco de dados. É o que você obtém quando chama um 
+método assíncrono.
+
+IDBTransaction
+Representa uma transação. Você cria a transação no banco de dados, especifíca o escopo (tal como qual objectStore você deseja acessar), e determina que tipo de acesso (apenas leitura ou também escrita) daquilo que você deseja.
+Uma versão anterior da especificação também define estas interfaces agora removidas. Elas ainda estão documentadas caso você precise atualizar códigos escritos anteriormente:
+
+IDBVersionChangeRequest
+Representa uma requisição para alterar a versão do banco de dados. O modo de alterar a versão do banco de dados mudou então (chamando 
+
+IDBFactory.open sem também chamar IDBDatabase.setVersion) e a interface IDBOpenDBRequest agora tem a funcionalidade do removido 
+
+IDBVersionChangeRequest.
+
+IDBDatabaseException  
+Representa condições de erro que podem ser encontradas enquanto performando operações no banco de dados.

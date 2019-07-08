@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Aprendendo IndexedDB</title>
+</head>
+
+<body>
+    <script>
+        required = () => new Error("Atributo não foi informado.");
+
+        class Produto {
+            constructor(nome = required(), quantidade = required(), valor = required()) {
+                this._nome = nome;
+                this._quantidade = quantidade;
+                this._valor = valor;
+            }
+        }
+    </script>
+    <script>
+        //check for support
+        if (!('indexedDB' in window)) {
+            console.log('This browser doesn\'t support IndexedDB');
+        }
+
+        var connection;
+        var openRequest = window.indexedDB.open("produtos", 3); // 3 é a versao atual
+
+        //Tríade de eventos disparados quando requisitamos uma abertura de conexão com o banco:
+        openRequest.onupgradeneeded = e => {
+            var minhaConnection = e.target.result;
+
+            if (minhaConnection.objectStoreNames.contains("produtos")) {
+                minhaConnection.deleteObjectStore("produtos");
+            }
+
+            // Definindo chave primaria
+            minhaConnection.createObjectStore("produtos", {
+                autoIncrement: true
+            });
+        };
+
+        openRequest.onsuccess = e => {
+            connection = e.target.result;
+            console.log(
+                "Conexão com banco realizada com sucesso! com o IDBDatabase: " + connection
+            );
+        };
+
+        openRequest.onerror = e => console.log(e.target.error);
+
+
+        var adicionaProduto = (nome, quantidade, valorUnitario) => {
+            let transaction = connection.transaction(['produtos'], 'readwrite');
+            let store = transaction.objectStore('produtos');
+
+            let produto = new Produto(nome, quantidade, valorUnitario);
+            let request = store.add(produto);
+
+            request.onsuccess = e => console.log('Produto incluida com sucesso')
+            request.onerror = e => console.log('Não foi possível incluir o produto');
+
+        }
+
+        var listaTodos = () => {
+            let transaction = connection.transaction(['produtos'], 'readwrite');
+            let store = transaction.objectStore('produtos');
+            let cursor = store.openCursor();
+            let produtos = [];
+
+            cursor.onsuccess = e => {
+                let atual = e.target.result;
+                if (atual) {
+                    let dado = atual.value;
+                    produtos.push(new Produto(dado._nome, dado._quantidade, dado._valor));
+                    atual.continue();
+
+                } else {
+                    console.log("Terminou de listar os produtos:" + JSON.stringify(produtos));
+                }
+            };
+
+            cursor.onerror = e => console.log(e.target.error.name);
+        }
+    </script>
+</body>
+
+</html>

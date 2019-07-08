@@ -1,0 +1,6 @@
+https://jsfiddle.net/dfahlander/3tf5r0cu
+
+
+http://aaronpowell.github.io/db.js/
+
+https://dexie.org/
