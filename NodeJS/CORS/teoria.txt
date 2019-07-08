@@ -1,0 +1,3 @@
+CORS: deve ser habilitado no back-end, é um modulo de segurança, que diz pro back se vai ser permitido ou nao que outras apps acessem as informacoes dessa app.
+
+Se tiver um projeto em uma estrutura separada do projeto principal tentando acessar, o CORS deve ser utilizado!
