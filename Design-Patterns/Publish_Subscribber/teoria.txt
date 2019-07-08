@@ -1,0 +1,11 @@
+Existem publicadores e Subscribers
+
+Publish(topico,dado): notifica todos que estejam inscritos ao topico passado no primeiro parametro
+                      O segundo parametro é qualquer informacao que queiramos fornecer para os inscritos.
+
+Subscribe => Realiza a inscricao para algum topico.
+             É possivel haver um ou mais inscritos e todos eles
+             Serão notificados toda vez que houver uma publicação para este topico
+
+
+EM NODEJS temos o EventEmitter que implementa esse pattern.

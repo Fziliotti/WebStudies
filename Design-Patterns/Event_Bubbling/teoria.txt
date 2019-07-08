@@ -1,0 +1,119 @@
+Jeniffer criou uma página para cadastrar produtos para impressionar sua amiga Agnes. Basta o usuário entrar com o nome do produto e clicar no botão para que um novo item apareça na página. Outro ponto importante: itens clicados exibem seu nome. Ela chegou a comentar todo seu código (inclusive você pode criar o arquivo jeniffer.html e testar seu código):
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Teste delegação</title>
+</head>
+<body>
+
+    <input class="entrada" placeholder="Informe o nome do produto" autofocus>
+    <button class="botao">Incluir</button>
+
+    <ul class="lista">
+        <li class="item">Açúcar</li>
+        <li class="item">Papel higiênico</li>
+    </ul>
+
+    <script>
+
+    // usou o module pattern, pois ela não esta usando ES2015 modules!
+
+    (function() {
+
+
+        let lista = document.querySelector('.lista');
+
+        /* 
+            O resultado de lista.querySelectorAll retorna um `NodeList` que por padrão 
+            não suporta forEach. Nesse caso, pegamos emprestado o `Array.prototype.forEach`
+            indicando que seu this será os itens da lista. O último parâmetro, um array, 
+            possui todos os parâmetros que a função forEach recebe, no caso, passamos 
+            uma arrow function, aquela que itera nos itens da lista.
+        */ 
+
+        Reflect.apply(Array.prototype.forEach, lista.querySelectorAll('.item'), [item => {
+
+            item.addEventListener('click', function() {
+                alert(this.textContent);
+            });
+
+        }]);
+
+        /*
+            Pega o elemento do DOM que contém a entrada do usuário
+        */
+
+        let entrada = document.querySelector('.entrada');
+
+        /*
+            Adiciona o evento click no botão que ao ser pressionado adiciona novas li na lista.
+        */
+
+        document.querySelector('.botao').addEventListener('click', function() {
+
+            let nome = entrada.value.trim();
+
+            if(nome) {
+
+                let novaLi = document.createElement('li');
+                novaLi.textContent = nome;
+                novaLi.classList.add('item');
+                lista.appendChild(novaLi);
+                entrada.value = '';
+                entrada.focus();
+            }
+
+        });
+
+    })();
+
+    </script>
+
+</body>
+</html>
+
+
+
+Tudo uma maravilha, no evento, apenas os itens que já existam na página exibem seu nome quando clicados. Novos itens não o exibem. Aprendemos no final deste capítulo a lidar com uma situação parecida através de delegação de eventos. Qual das opções abaixo altera corretamente o código para suportar delegação?
+
+
+(function() {
+
+
+    let lista = document.querySelector('.lista');
+
+    lista.addEventListener('click', function(event) {
+        if(event.target.nodeName == 'LI')
+            alert(event.target.textContent);
+    });
+
+    let entrada = document.querySelector('.entrada');
+
+
+    document.querySelector('.botao').addEventListener('click', function() {
+
+        let nome = entrada.value.trim();
+
+        if(nome) {
+
+            let novaLi = document.createElement('li');
+            novaLi.textContent = nome;
+            novaLi.classList.add('item');
+            lista.appendChild(novaLi);
+            entrada.value = '';
+            entrada.focus();
+        }
+
+    });
+
+})();
+
+
+
+
+Quando clicamos em uma li, nosso alvo (target), o evento click sobe na hierarquia de elementos. Para cada elemento na hierarquia será perguntado se ele também responde ao evento click. No caso, a UL responde ao evento clique, mas no lugar de usar this, que seria a própria UL, usamos event.target que é o elemento do DOM que disparou o evento inicialmente. Só que usamos a condição if para testar se o elemento é uma 'LI', porque não queremos responder para qualquer filho dentro de UL, apesar de uma UL normalmente ter apenas li como elemento filho.
+
+

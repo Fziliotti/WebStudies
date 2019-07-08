@@ -1,0 +1,37 @@
+INSPIRAÇÃO:
+
+var Counter = {
+    count: 0
+  , increment: function() {
+      return this.count += 1;
+    }
+};
+
+Counter.increment();
+Counter.increment();
+Counter.count; // returns 2
+Counter.count = 100;
+Counter.count; // returns 100
+
+O grande problema dessa implementação é que é muito simples quebrar o encapsulamento e manipular o atributo Counter.count diretamente. Em vez disso, podemos criar uma variável local que irá armazenar o contador e expor uma interface pública que retorna esse valor.
+
+sOLUÇÃO:
+
+var Counter = (function(){
+  var count = 0;
+
+  return {
+      count: function() {
+        return count;
+      }
+
+    , increment: function() {
+        return count += 1;
+      }
+  };
+})();
+
+
+Note que ambas as funções referenciam a variável count, que não pode ser acessada diretamente de fora da função auto-executável. Dessa forma, podemos encapsular todo o comportamento, sem termos que nos preocupar com modificações feitas sem ser pela função Counter.increment().
+
+Essa técnica de retornar uma interface pública à partir de um módulo também é chamada de Revealing Module Pattern.
