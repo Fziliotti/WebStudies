@@ -1,7 +1,0 @@
-HATEOAS (Hypermedia as the Engine of Application State) is a constraint of the REST application architecture.
-
-
-No momento de enviar a resposta de uma rota no backend.
-
-Podemos ennviar os possiveis links (próximos passos) que o cliente pode seguir apos determinada ação na nossa aplicação REST.
-
