@@ -1,0 +1,41 @@
+What is the difference between an expression and a statement in JavaScript?
+Answer
+There are two main syntactic categories in JavaScript: expressions and statements. A third one is both together, referred to as an expression statement. They are roughly summarized as:
+
+Expression: produces a value
+Statement: performs an action
+Expression statement: produces a value and performs an action
+
+
+
+Statements
+let x = 0
+
+function declaration() {}
+
+if (true) {
+}
+Statements appear as instructions that do something but don't produce values.
+
+// Assign `x` to the absolute value of `y`.
+var x
+if (y >= 0) {
+  x = y
+} else {
+  x = -y
+}
+The only expression in the above code is y >= 0 which produces a value, either true or false. A value is not produced by other parts of the code.
+
+Expressions
+Expressions produce a value. They can be passed around to functions because the interpreter replaces them with the value they resolve to.
+
+5 + 5 // => 10
+
+lastCharacter("input") // => "t"
+
+true === true // => true
+Expression statements
+There is an equivalent version of the set of statements used before as an expression using the conditional operator:
+
+// Assign `x` as the absolute value of `y`.
+var x = y >= 0 ? y : -y

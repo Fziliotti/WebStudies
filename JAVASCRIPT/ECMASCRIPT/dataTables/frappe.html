@@ -1,0 +1,42 @@
+
+<style>
+  body{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+<!-- include styles -->
+<link href="https://unpkg.com/frappe-datatable@0.0.5/dist/frappe-datatable.min.css" rel="stylesheet">
+
+<!-- create the container element -->
+<div id="datatable"></div>
+
+<!-- include the dependencies -->
+<script src="https://unpkg.com/sortablejs@1.7.0/Sortable.min.js"></script>
+<script src="https://unpkg.com/clusterize.js@0.18.0/clusterize.min.js"></script>
+<!-- include the lib -->
+<script src="https://unpkg.com/frappe-datatable@0.0.5/dist/frappe-datatable.min.js"></script>
+
+<!-- initialize DataTable -->
+<script>
+  const datatable = new DataTable('#datatable', {
+    columns: ['ID','Name', 'Position', 'Salary','Endereço','CEP'],
+    data: [
+      ['Faris', 'Software Developer', '$1200'],
+      ['Manas', 'Software Engineer', '$1400'],
+      ['Manas', 'Software Engineer', '$1400'],
+      ['Manas', 'Software Engineer', '$1400'],
+      ['Manas', 'Software Engineer', '$1400'],
+      ['Japa', 'Data Cience Engineer', '$1400'],
+      ['Manas', 'Software Engineer', '$1400'],
+      ['Manas', 'Software Engineer', '$1400'],
+      ['Fabio', 'Cientist Engineer', '$1400'],
+      ['Manas', 'Software Engineer', '$1400'],
+      ['Fabricio', 'Designer Engineer', '$1400']
+    ]
+  });
+</script>
