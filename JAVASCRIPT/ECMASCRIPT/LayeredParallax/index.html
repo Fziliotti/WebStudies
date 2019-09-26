@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="main.css">
+
+  <style>
+    section{
+      height: 80vh;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+
+  
+
+  <div id="parallax-container">
+    <div style="background: url(https://cdn2.hubspot.net/hubfs/1951013/Parallax/SkyBG.png);"></div>
+    <div style="background: url(https://cdn2.hubspot.net/hubfs/1951013/Parallax/Clouds1.png);"></div>
+    <div style="background: url(https://cdn2.hubspot.net/hubfs/1951013/Parallax/Clouds2.png);"></div>
+    <div style="background: url(https://cdn2.hubspot.net/hubfs/1951013/Parallax/Clouds3.png);"></div>
+    <div style="background: url('photo.png')"> </div>
+    <!-- <div style="background: url(https://cdn2.hubspot.net/hubfs/1951013/Parallax/Moon.png)"> DSADAS</div> -->
+    <div style="background: url(https://cdn2.hubspot.net/hubfs/1951013/Parallax/Hill.png)"></div>
+  </div>
+    <div id="content">
+    <h1>Parallax Effect</h1>
+      <p>The parallax code is from Collin Delphia's CodePen <a href="https://codepen.io/Kikoku/pen/PWyyVg">here</a>.</p>
+      <p>I created the artwork in Adobe Illustrator based on the Animal Silhouette Moonlight Vector Illustration - Illustrator Tutorial by tutvid <a href="https://www.youtube.com/watch?v=RtnCn65MdN0">here</a>.</p>
+
+      <section></section>
+  </div>
+  
+  <!-- <section></section> -->
+
+
+  <script>
+  
+  window.addEventListener('scroll', () => {
+      let parent =  document.getElementById('parallax-container');
+      let children = parent.getElementsByTagName('div');
+      for(let i = 0; i < children.length; i++) {
+        children[i].style.transform = 'translateY(-' + (window.pageYOffset * i / children.length) + 'px)';
+      }
+
+      console.log('ae')
+    }, false)
+  </script>
+
+
+</body>
+</html>
