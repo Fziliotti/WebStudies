@@ -1,0 +1,11 @@
+Em nosso entendimento de MVC, a “view” representa os dados que são apresentados ao usuário. Nao é necessariamente como a informação é apresentada, mas qual informação é mostrada. A view representa qual informação você vê, não como você vê. Há uma sutil diferença.
+
+Então, nesse caso, uma “view” é uma função de retorno para uma URL específica, por que esta função de retorno descreve qual informação é apresentada.
+
+Além disso, é imprescindível separar conteúdo de apresentação – onde os templates residem. No Django, uma “view’ descreve qual informação é apresentada, mas uma view normalmalmente delega para um template, que descreve como a informação é apresentada.
+
+Onde o “controller” se encaixa, então? No caso do Django, é provavelmente o próprio framework - o maquinário que envia uma requisição para a “view” apropriada, de acordo com a configuração de URL do Django.
+
+Se você está faminto por acrônimos, você deve dizer que Django é um framework “MTV” – Isto é, “model”, “template” e “view”. Essa correspondência faz muito mais sentido.
+
+No final do dia, é claro, tudo se resume a conseguir fazer coisas. Independentemente de como as coisas são nomeadas, Django as executa da forma que é mais lógica para nós.

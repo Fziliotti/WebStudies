@@ -40,10 +40,12 @@
         document.addEventListener("DOMContentLoaded", function () {
             var lazyloadImages = document.querySelectorAll("img.lazy");
             var lazyloadThrottleTimeout;
+            console.log('1')
 
             function lazyload() {
                 if (lazyloadThrottleTimeout) {
                     clearTimeout(lazyloadThrottleTimeout);
+                    console.log('clearTimeout')
                 }
 
                 lazyloadThrottleTimeout = setTimeout(function () {
