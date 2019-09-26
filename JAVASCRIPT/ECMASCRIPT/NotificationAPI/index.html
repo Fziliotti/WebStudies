@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <style>
+    /* button */
+    .btn {
+      display: block;
+      text-align: center;
+      margin: 30vmin auto;
+      width: 200px;
+      padding: 10px;
+      color: #fff;
+      font-family: "Roboto", sans-serif;
+    }
+    .btn-red {
+      background: #ff1744;
+    }
+
+    /* ripple */
+    .ripple {
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgb(255, 255, 255);
+      transform: scale(0);
+      position: absolute;
+      opacity: 0.4;
+    }
+    .ripple-wrapper {
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .ripple-effect {
+      animation: rippleDrop 0.6s linear;
+    }
+
+    @keyframes rippleDrop {
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+  </style>
+  <body>
+    <div class="btn btn-red">
+      Show Notification
+    </div>
+
+
+    <p>https://codeburst.io/understanding-the-notification-api-804fb5c1ae9c</p>
+  </body>
+
+  <script>
+    function makeItRipple(color, event) {
+      this.innerFunction = e => {
+        this.classList.add("ripple-wrapper");
+        let ripple = document.querySelector(".ripple");
+        if (ripple) this.removeChild(ripple);
+        ripple = document.createElement("span");
+        ripple.classList.add("ripple");
+        this.prepend(ripple);
+        if (color) ripple.style.background = color;
+        let buttonWidth = this.offsetWidth,
+          buttonHeight = this.offsetHeight;
+        if (buttonWidth >= buttonHeight) {
+          buttonHeight = buttonWidth;
+        } else {
+          buttonWidth = buttonHeight;
+        }
+        ripple.style.width = buttonWidth + "px";
+        ripple.style.height = buttonHeight + "px";
+        ripple.style.top = e.pageY - this.offsetTop - buttonHeight / 2 + "px";
+        ripple.style.left = e.pageX - this.offsetLeft - buttonWidth / 2 + "px";
+        ripple.classList.add("ripple-effect");
+      };
+      this.addEventListener(event || "click", this.innerFunction);
+    }
+    function setRipple(color, event) {
+      let $this = this;
+      if (!this.length) $this = [this];
+      $this.forEach(el => {
+        makeItRipple.call(el, color, event);
+      });
+    }
+
+    Object.prototype.setRipple = setRipple;
+    const btn = document.querySelector(".btn");
+    btn.setRipple();
+
+    function createNotification() {
+      // first let's check browser support
+      if (!("Notification" in window)) {
+        throw new Error("Browser doesn't support notifications");
+      }
+      // now let's look whether permission is already granted or not
+      switch (Notification.permission) {
+        case "granted": {
+          return innerCreateNotification;
+        }
+        case "denied": {
+          alert("Notification already denied");
+          break;
+        }
+        case "default": {
+          Notification.requestPermission(permission => {
+            if (permission === "granted") {
+              return innerCreateNotification;
+            }
+            alert("Notification denied");
+          });
+        }
+      }
+
+      function innerCreateNotification(notificationProps) {
+        const notification = new Notification(
+          notificationProps.title,
+          notificationProps
+        );
+        if (Number.isInteger(notificationProps.closeTimeout)) {
+          setTimeout(() => {
+            notification.close();
+          }, notificationProps.closeTimeout);
+        }
+      }
+    }
+
+    const notificationHandler = createNotification();
+
+    const notificationProps = {
+      title: "I'm notification",
+      body: "Here is my desription",
+      icon: "https://avatars1.githubusercontent.com/u/22643415",
+      vibrate: [50, 100, 150]
+    };
+
+    btn.onclick = () => {
+      notificationHandler(notificationProps);
+    };
+  </script>
+</html>
