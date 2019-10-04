@@ -3,4 +3,4 @@ var i = setInterval(function () {
 }, 1000);
 setTimeout(function () {
 	clearInterval(i);
-}, 5000);
+}, 500);
