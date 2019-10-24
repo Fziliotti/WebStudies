@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>BorderBox</title>
+  </head>
+
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+    }
+    .box {
+      display: inline-block;
+      width: 150px;
+      height: 150px;
+      padding: 10px;
+      background: tomato;
+      color: white;
+      border: 10px solid red;
+    }
+    .content-box {
+      box-sizing: content-box;
+    }
+  </style>
+  <body>
+    <div class="box">border-box</div>
+    <div class="box content-box">content-box</div>
+
+    <p style="margin-top:3rem">
+      box-sizing: border-box makes the addition of padding or borders not affect
+      an element's width or height.<br />
+      box-sizing: inherit makes an element respect its parent's box-sizing rule.
+    </p>
+  </body>
+</html>

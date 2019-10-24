@@ -1,0 +1,8 @@
+Observe que a análise do nosso algoritmo não está focada se os valores são pequenos ou grandes. Estamos interessados no número de operações que o computador faz a longo prazo, quando as linhas deslancham no gráfico, para analisarmos se o crescimento será linear, quadrático ou outras possibilidades. Quando fazemos uma análise que leva tais aspectos em consideração a chamamos de assintótica.
+
+Ao fazermos uma análise assintótica do algoritmo, identificamos se ele é linear ou quadrático. É possível que para valores pequenos, seja irrelevante a diferença entre um e outro. Porém, quando temos um aumento nos valores, as diferenças se tornarão mais expressivas. Por exemplo, no Comp 800 n^2, o tempo para execução de operações passa das 2 horas.
+
+
+Todos estes valores (constante, linear, logarítmico, quadrático, cúbico e exponencial) são maneiras de descobrirmos a forma geral da curva que o algoritmo se aproxima. Esta é o que chamamos de análise assintótica.
+
+É incomum dizermos que um algoritmo linear é 1. A forma correta é O(1), isto significa que analisamos o algoritmo e ele é constante. O(n) é linear. O(n²) é quadrático. O(n³) é cúbico. O(2^n) significa que é exponencial. Utilizamos a letra O maiúscula para dizer como o algoritmo se comporta - qual será o seu desempenho assintoticamente.
