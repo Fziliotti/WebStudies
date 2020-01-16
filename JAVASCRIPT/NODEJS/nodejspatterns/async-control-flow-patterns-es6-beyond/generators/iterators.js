@@ -11,6 +11,6 @@ const iterator = iteratorGenerator(numbers);
 let currentItem = iterator.next();
 
 while (!currentItem.done) {
-  currentItem = iterator.next();
   console.log(currentItem);
+  currentItem = iterator.next();
 }

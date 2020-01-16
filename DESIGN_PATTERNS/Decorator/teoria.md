@@ -1,0 +1,1 @@
+it’s pretty similar to proxy, but instead of enhancing or modifying the behavior, it augments with new functionalities. The difference with inheritance is that decorator doesn’t add the behavior to all the objects of the same class, only to the instances that are decorated. Like in the proxy patterns, composition and object augmentation are the main techniques.
