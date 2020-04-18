@@ -1,5 +1,4 @@
 //arquivo custom-express.js
-
 var express = require('express');
 var consign = require('consign');
 
@@ -9,16 +8,16 @@ var consign = require('consign');
 
 var bodyParser = require('body-parser');
 
-module.exports = function(){
+module.exports = function () {
   var app = express();
 
-  app.use(bodyParser.urlencoded({extended: true}));
+  app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
 
   //usando consign para incluir as routes no app
   consign()
-   .include('routes')
-   .into(app);
+    .include('routes')
+    .into(app);
 
   return app;
 }
